@@ -1,9 +1,67 @@
 git switch -c station-upgrade
+
 mkdir results
+
 touch results/summary.md && echo "Analysis of the first field season." >> results/summary.md
+
 git add results/
 git commit -m "Add results directory"
+
 mv data/sensor-readings.csv data/station-data.csv
+
 mkdir scripts/archive && cp scripts/*.py scripts/archive/
+
 rm docs/notes.md
 
+git add -A
+git commit -m "Update station files"
+
+touch .gitignore
+echo "temp/" >> .gitignore
+echo "log?.txt" >> .gitignore
+
+cat .gitignore
+
+git add .gitignore && git commit -m "Add gitignore"
+
+touch log{1..4}.txt
+
+git status
+On branch station-upgrade
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   commands.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+The files do not appear in the output because of the log?.txt line in the .gitignore file because of the log?.txt line, which matches the pattern in the file name so git ignores those files.
+
+wc -l < data/station-data.csv >> results/summary.md
+
+vim scripts/03-plot.py
+
+diff --git a/commands.txt b/commands.txt
+index 7ff09a2..d42779d 100644
+--- a/commands.txt
++++ b/commands.txt
+@@ -6,4 +6,22 @@ git commit -m "Add results directory"
+ mv data/sensor-readings.csv data/station-data.csv
+ mkdir scripts/archive && cp scripts/*.py scripts/archive/
+ rm docs/notes.md
++git add -A
++git commit -m "Update station files"
++touch .gitignore
++echo "temp/" >> .gitignore
++echo "log?.txt" >> .gitignore
++cat .gitignore
++git add .gitignore && git commit -m "Add gitignore"
++touch log{1..4}.txt
++git status
++On branch station-upgrade
++Changes not staged for commit:
++  (use "git add <file>..." to update what will be committed)
++  (use "git restore <file>..." to discard changes in working directory)
++       modified:   commands.txt
+
+Lines starting with + indicate added content
