@@ -65,3 +65,9 @@ index 7ff09a2..d42779d 100644
 +       modified:   commands.txt
 
 Lines starting with + indicate added content
+
+git add -A
+
+git commit -m "Update analyss"
+
+git commit --amend -m "Update analysis"
